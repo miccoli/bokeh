@@ -66,21 +66,22 @@ export class WedgeView extends XYGlyphView {
     const x = this.renderer.xscale.invert(sx);
     const y = this.renderer.yscale.invert(sy);
 
-    // check radius first
+    // check diameter first
+    const max_diamter = 2 * this.max_radius
     if (this.model.properties.radius.units === "data") {
-      x0 = x - this.max_radius;
-      x1 = x + this.max_radius;
+      x0 = x - max_diamter;
+      x1 = x + max_diamter;
 
-      y0 = y - this.max_radius;
-      y1 = y + this.max_radius;
+      y0 = y - max_diamter;
+      y1 = y + max_diamter;
 
     } else {
-      sx0 = sx - this.max_radius;
-      sx1 = sx + this.max_radius;
+      sx0 = sx - max_diamter;
+      sx1 = sx + max_diamter;
       [x0, x1] = this.renderer.xscale.r_invert(sx0, sx1);
 
-      sy0 = sy - this.max_radius;
-      sy1 = sy + this.max_radius;
+      sy0 = sy - max_diamter;
+      sy1 = sy + max_diamter;
       [y0, y1] = this.renderer.yscale.r_invert(sy0, sy1);
     }
 
